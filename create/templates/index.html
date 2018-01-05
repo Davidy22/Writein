@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<form action="/create/" method="POST">
+	{% csrf_token %} 
+	<button type="button submit" class="btn btn-primary btn-lg">Make New Poll</button>
+</form>
+{% endblock %}

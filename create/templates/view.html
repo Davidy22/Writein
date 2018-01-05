@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<input type="text" value="url" id="url">
+
+<!-- The button used to copy the text -->
+<button type="button" onclick="myFunction()" class="btn btn-primary btn-md">Copy link</button>
+{% if entries %}
+<table class="center">{% for entry in entries %}
+		<tr>
+			<td class="entryName">{{entry.1}}</td>
+			<td class="entryCount">{{entry.0}}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% else %}
+<p>No submissions yet</p>
+{% endif %}
+{% endblock %}

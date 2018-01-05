@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+<input type="text" value="url" id="url">
+
+<!-- The button used to copy the text -->
+<button type="button" onclick="myFunction()" class="btn btn-primary btn-md">Copy link</button>
+<form action="" method="POST">
+	{% csrf_token %} 
+	{{ form }}
+	<br />
+	<button type="button submit" class="btn btn-primary btn-lg">Submit Vote</button>
+</form>
+
+{% endblock %}

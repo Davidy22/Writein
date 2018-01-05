@@ -1,0 +1,102 @@
+h1 {
+	font-weight:bold;
+}
+
+html {
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.main {
+	text-align: center;
+	margin: 0 auto;
+	display: table;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.btn-lg {
+	border-radius: 10px;
+	font-size: 40px;
+}
+
+.pollBody {
+	background-color: #BFDAD9;
+	border-radius:20px;
+	padding-top:2%;
+	padding-bottom:5%;
+}
+
+.footer {
+	position:absolute;
+	bottom:0;
+	right:0;
+	left:0;
+	height:100px;
+	background-color:#B0BBBF;
+	text-align:center;
+}
+
+.header {
+	position:absolute;
+	top:0;
+	right:0;
+	left:0;
+	height:30px;
+	background-color:#5B6D7C;
+	text-align:center;
+}
+
+
+.col-6 {
+	width:70%;
+}
+
+body {
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100%;
+	background-color:#D9EAE9;
+	color:#3B4D5C;
+	font-family:"verdana";
+}
+
+.head {
+	height:140px;
+}
+
+.pad {
+	height:50px;
+}
+
+.entryName {
+	text-align:left;
+	background-color:#D9EAE9;
+	padding:5px;
+	border-spacing: 10px 10px;
+	border-radius:5px;
+}
+
+.entryCount {
+	text-align:right;
+	background-color:#D9EAE9;
+	padding:5px;
+	border-spacing: 10px 10px;
+	border-radius:5px;
+	width:5em;
+}
+
+.center {
+	margin:auto;
+	width:60%;
+}
+
+table {
+	border: 10px #BFDAD9;
+	border-collapse: separate;
+	border-style: solid;
+	border-spacing: 10px 10px;
+}
