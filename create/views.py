@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import poll, entry
-from .form import submitEntryForm
+from .form import submitEntryForm, newPollForm
 from .group import groupEntries
 # Create your views here.
 
 def index(request):
-	return render(request, 'index.html')
+	form = newPollForm()
+	return render(request, 'index.html', context={'form':form})
 
 def polling(request,ID):
 	pollIDFound = poll.objects.filter(id=ID).count()
@@ -20,7 +21,8 @@ def polling(request,ID):
 	
 	if (entry.objects.filter(IP=ip,pollID=ID).count() > 0):
 		entries = groupEntries(ID)
-		return render(request, 'view.html', context={'entries':entries})
+		question = poll.objects.filter(id=ID)[0].question
+		return render(request, 'view.html', context={'entries':entries,'question':question})
 
 	if request.method == 'POST':
 		form = submitEntryForm(request.POST)
@@ -30,15 +32,24 @@ def polling(request,ID):
 			
 			entry.objects.create(IP=ip,text=entryField,pollID=poll.objects.filter(id=ID)[0])
 			entries = groupEntries(ID)
+			if (len(entries) > 20):
+				entries = entries[:19]
 			return render(request, 'view.html', context={'entries':entries})
 	else:
 		form = submitEntryForm()
 
-	entries = groupEntries(ID)
-	if (len(entries) > 20):
-		entries = entries[:19]
-	return render(request, 'poll.html', context={'entries':entries, 'form':form})
+
+	question = poll.objects.filter(id=ID)[0].question
+	return render(request, 'poll.html', context={'form':form,'question':question})
 
 def create(request):
-	temp = poll.objects.create()
-	return redirect('/{0}'.format(temp.id))
+	form = newPollForm(request.POST)
+	
+	if form.is_valid():
+		questionField = form.cleaned_data['questionField']
+		temp = poll.objects.create(question=questionField)
+		return redirect('/{0}'.format(temp.id))
+	else:
+		temp = poll.objects.create(question='')
+		return redirect('/{0}'.format(temp.id))
+	# add case for invalid question

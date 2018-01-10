@@ -3,6 +3,7 @@ from .models import poll, entry
 
 # Register your models here.
 class pollAdmin(admin.ModelAdmin):
+	list_display = ('question', 'id')
 	pass
 admin.site.register(poll,pollAdmin)
 

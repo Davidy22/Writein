@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class poll(models.Model):
+	question = models.CharField(max_length=140,default='',help_text="Poll question")
 	
 	def __str__(self):
 		return '{0}'.format(self.id)

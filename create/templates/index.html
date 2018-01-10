@@ -2,8 +2,10 @@
 
 {% block content %}
 
-<form action="/create/" method="POST">
-	{% csrf_token %} 
+<form action="/create/" novalidate method="POST">
+	{% csrf_token %}
+	{{ form }}
+	<br /> 
 	<button type="button submit" class="btn btn-primary btn-lg">Make New Poll</button>
 </form>
 {% endblock %}
